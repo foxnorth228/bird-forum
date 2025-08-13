@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# Bird Forum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Общие моменты
 
-Currently, two official plugins are available:
+- проект создан с помощью Vite, с FSD-архитектурой
+- В проект добавлены и настроены eslint, prettier, husky
+- Вместо API используется локальный json-server
+- Стек: React, Typescript, RTK/RTK Query, Styled Components, Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Запуск проекта
 
-## Expanding the ESLint configuration
+Вначале следует запустить json-server в качестве БД  
+`npm run db`  
+После этого можно запустить dev-сервер  
+`npm run dev`  
+БД будет хоститься по localhost:3000, dev-сервер на localhost:5173. Если порт 3000 занял и json-server
+запустился на другом порту, нужно обновить ссылку на дб DB_ROUTE в src/app/routes/db-route.ts
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Задание
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+[Условия задания](https://docs.google.com/document/d/1_F24TUL52rvproT8LdBVGoXfjy_TapFkXocLxDLcupY/edit?tab=t.0)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- [x] Создать каркас через удобный вам сборщик (можно и react-create-app), использовать исключительно хуки, без классовых компонентов, API (как вариант) - https://jsonplaceholder.typicode.com/
+- [x] Дизайн на ваше усмотрение, но должно быть современно.
+- [x] Форум должен содержать пользователей;
+- [x] Форум должен содержать: посты пользователей;
+- [ ] Возможность просматривать все посты;
+- [ ] Фильтрация постов по юзерам;
+- [ ] Просматривать каждый пост по отдельности отдельной страничкой с отдельным роутом;
+- [ ] Смотреть комменты к каждому посту;
+- [ ] Оставлять комменты (как таковой возможности через API может и не быть, в таком случае сделать просто на стороне фронта до перезагрузки страницы)
+- [ ] Создавать/Удалять посты;
+- [ ] Ставить лайк/дизлайк на пост;
+- [ ] Добавлять посты в избранное;
+- [ ] Также приложение должно включать в себя личный кабинет пользователя, в котором можно просмотреть и редактировать информацию (имя, емэйл, адрес и прочее).
+- [ ] Cо звёздочкой - админка, если юзер - админ - он имеет доступ по роуту из личного кабинета к страничке со всеми юзерами, где он может редактировать информацию о них. Также админ может задавать постам приоритет (подымать в топы, менять местами).
+- [x] Будет плюсом если приложение будет на TypeScript.

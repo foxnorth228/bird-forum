@@ -1,5 +1,5 @@
 import { useGetPostsWithUsersQuery } from '@entities/posts/api/slice';
-import { usePostFilterData } from '@entities/posts/model/post-filters-slice';
+import { usePostFilterData } from '@entities/posts/model/post-filter-data';
 
 export const useGetFilteredPosts = () => {
   const { username } = usePostFilterData();

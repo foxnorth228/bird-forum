@@ -1,13 +1,15 @@
-//import { useGetFilteredPosts } from '@entities/posts/model/use-get-filtered-posts';
+import { PostsFilter } from '@entities/posts/ui/posts-filter';
+import { PostsGrid } from '@entities/posts/ui/posts-grid';
 import { BasePage } from '@widgets/base-page/ui/base-page';
 import styled from 'styled-components';
 
 export const PostsPage = () => {
-  //const { data, isLoading, error } = useGetFilteredPosts();
-
   return (
     <BasePage>
-      <SContainer></SContainer>
+      <SContainer>
+        <PostsFilter />
+        <PostsGrid />
+      </SContainer>
     </BasePage>
   );
 };
@@ -15,4 +17,6 @@ export const PostsPage = () => {
 const SContainer = styled.main`
   width: 100%;
   height: 100%;
+  flex-grow: 1;
+  display: flex;
 `;

@@ -21,7 +21,10 @@ const SContainer = styled.header`
   border-bottom: ${(props) => props.theme.spacing(0.125)} solid
     ${(props) => props.theme.colors.border};
 `;
+
 const SIcon = styled(Icon)`
   width: fit-content;
   height: ${(props) => props.theme.spacing(5)};
+  color: ${(props) => props.theme.colors.mark};
+  font-size: ${(props) => props.theme.spacing(3)};
 `;
