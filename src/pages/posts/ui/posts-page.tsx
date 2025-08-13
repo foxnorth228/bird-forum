@@ -1,6 +1,6 @@
 import { PostsFilter } from '@entities/posts/ui/posts-filter';
 import { PostsGrid } from '@entities/posts/ui/posts-grid';
-import { BasePage } from '@widgets/base-page/ui/base-page';
+import { BasePage } from '@shared/ui/base-page';
 import styled from 'styled-components';
 
 export const PostsPage = () => {

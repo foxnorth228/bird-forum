@@ -1,7 +1,7 @@
 export type IRole = 'admin' | 'user';
 
 export interface IUser {
-  id: number;
+  id: string;
   role: IRole;
   name: string;
   email: string;

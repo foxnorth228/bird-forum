@@ -1,18 +1,21 @@
+import { useAuth } from '@entities/auth/model/use-auth';
 import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { PrivateRoute } from './routes/private-route';
 import { routes } from './routes/routes';
 
-export function AppRouter({ currentRole }: { currentRole: string }) {
+export function AppRouter() {
+  const user = useAuth();
+
   return (
     <BrowserRouter>
       <Routes>
-        {routes.map(({ path, element, private: isPrivate, rolesAllowed }, i) => {
+        {routes.map(({ path, element, rolesAllowed, loginRequired }, i) => {
           let content = element;
 
-          if (isPrivate) {
+          if (loginRequired !== undefined) {
             content = (
-              <PrivateRoute rolesAllowed={rolesAllowed} currentRole={currentRole}>
+              <PrivateRoute user={user} rolesAllowed={rolesAllowed} loginRequired={loginRequired}>
                 {element}
               </PrivateRoute>
             );

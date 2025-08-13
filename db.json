@@ -1,25 +1,25 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "role": "admin",
       "name": "Alice Johnson",
       "email": "alice@example.com",
       "address": "123 Main St, New York",
       "password": "adminpass",
-      "bookmarks": [2, 3]
+      "bookmarks": ["2", "3"]
     },
     {
-      "id": 2,
+      "id": "2",
       "role": "user",
       "name": "Bob Smith",
       "email": "bob@example.com",
       "address": "456 Pine St, Los Angeles",
       "password": "userpass",
-      "bookmarks": [1]
+      "bookmarks": ["1"]
     },
     {
-      "id": 3,
+      "id": "3",
       "role": "user",
       "name": "Charlie Brown",
       "email": "charlie@example.com",
@@ -30,52 +30,52 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "userId": 1,
+      "id": "1",
+      "userId": "1",
       "text": "Welcome to my first post!",
       "createdAt": "2025-08-01T10:00:00Z",
-      "likes": [2, 3],
+      "likes": ["3", "2"],
       "dislikes": [],
       "priority": 1
     },
     {
-      "id": 2,
-      "userId": 2,
+      "id": "2",
+      "userId": "2",
       "text": "Hello from sunny California!",
       "createdAt": "2025-08-02T14:30:00Z",
-      "likes": [1],
+      "likes": ["1", "2"],
       "dislikes": [],
       "priority": 2
     },
     {
-      "id": 3,
-      "userId": 3,
+      "id": "3",
+      "userId": "3",
       "text": "This is my first comment on this forum!",
       "createdAt": "2025-08-03T09:15:00Z",
-      "likes": [],
-      "dislikes": [1],
+      "likes": ["2"],
+      "dislikes": ["1"],
       "priority": 3
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "postId": 1,
-      "userId": 2,
+      "id": "1",
+      "postId": "1",
+      "userId": "2",
       "text": "Nice post, Alice!",
       "createdAt": "2025-08-01T11:00:00Z"
     },
     {
-      "id": 2,
-      "postId": 1,
-      "userId": 3,
+      "id": "2",
+      "postId": "1",
+      "userId": "3",
       "text": "I agree with Bob, great work!",
       "createdAt": "2025-08-01T12:00:00Z"
     },
     {
-      "id": 3,
-      "postId": 2,
-      "userId": 1,
+      "id": "3",
+      "postId": "2",
+      "userId": "1",
       "text": "Glad to see you here, Bob!",
       "createdAt": "2025-08-02T15:00:00Z"
     }

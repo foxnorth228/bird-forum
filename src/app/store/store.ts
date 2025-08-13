@@ -1,7 +1,8 @@
+import authSlice from '@entities/auth/model/auth-slice';
 import { commentsApi } from '@entities/comments/model/slice';
 import { postsApi } from '@entities/posts/api/slice';
 import postFilterReducer from '@entities/posts/model/post-filter-slice';
-import { usersApi } from '@entities/users/model/slice';
+import { usersApi } from '@entities/users/api/slice';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     [postsApi.reducerPath]: postsApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
     postFilter: postFilterReducer,
+    auth: authSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

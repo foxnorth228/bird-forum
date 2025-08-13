@@ -1,21 +1,15 @@
 import { IUser } from '@entities/users/model/types';
 
 export interface IPost {
-  id: number;
-  userId: number;
+  id: string;
+  userId: string;
   text: string;
   createdAt: string;
-  likes: number[];
-  dislikes: number[];
+  likes: string[];
+  dislikes: string[];
   priority: number;
 }
 
-export interface IPostUser {
-  id: number;
+export interface IPostUser extends IPost {
   user: IUser;
-  text: string;
-  createdAt: string;
-  likes: number[];
-  dislikes: number[];
-  priority: number;
 }
