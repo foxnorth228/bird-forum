@@ -1,5 +1,6 @@
 import { IPostUser } from '@entities/posts/model/types';
 import { AddToFavorites } from '@features/posts/ui/add-to-fav';
+import { DeletePostButton } from '@features/posts/ui/delete-post-button';
 import { Dislikes } from '@features/posts/ui/dislike';
 import { Likes } from '@features/posts/ui/like';
 import { Link } from 'react-router';
@@ -7,11 +8,12 @@ import styled from 'styled-components';
 
 interface IPostElement {
   data: IPostUser;
+  standalone?: boolean;
 }
 
-export const PostElement = ({ data }: IPostElement) => {
+export const PostElement = ({ data, standalone }: IPostElement) => {
   return (
-    <SContainer>
+    <SContainer $minHeight={standalone ? '300px' : ''}>
       <Link to={'/posts/' + data.id}>
         <SHeader>
           <SHeaderText>by {data.user.name}</SHeaderText>
@@ -19,8 +21,9 @@ export const PostElement = ({ data }: IPostElement) => {
         </SHeader>
         <SContent>{data.text}</SContent>
       </Link>
-      <SActions>
+      <SActions $standalone={standalone}>
         <AddToFavorites postId={data.id} />
+        {standalone && <DeletePostButton postId={data.id} userCreatorId={data.user.id} />}
         <Likes id={data.id} likes={data.likes} dislikes={data.dislikes} />
         <Dislikes id={data.id} likes={data.likes} dislikes={data.dislikes} />
       </SActions>
@@ -28,11 +31,13 @@ export const PostElement = ({ data }: IPostElement) => {
   );
 };
 
-const SContainer = styled.div`
+const SContainer = styled.div<{ $minHeight?: string }>`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: ${(props) => props.theme.spacing(1)};
   width: 100%;
+  ${(props) => props.$minHeight && `min-height: ${props.$minHeight};`};
   height: fit-content;
   box-sizing: border-box;
   padding: ${(props) => props.theme.spacing(1)};
@@ -57,8 +62,9 @@ const SContent = styled.div`
   cursor: pointer;
 `;
 
-const SActions = styled.div`
+const SActions = styled.div<{ $standalone?: boolean }>`
   display: grid;
-  grid-template-columns: 1fr min-content min-content;
+  grid-template-columns: 1fr ${(props) =>
+      props.$standalone ? 'min-content' : ''} min-content min-content;
   grid-template-rows: 1fr min-content;
 `;

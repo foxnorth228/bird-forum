@@ -10,6 +10,9 @@ export const usersApi = createApi({
     getUsers: builder.query<IUser[], void>({
       query: () => `users`,
     }),
+    getUser: builder.query<IUser, string>({
+      query: (id) => `users/${id}`,
+    }),
     updateBookmarks: builder.mutation<
       { bookmarks: IUser['bookmarks'] },
       { id: IUser['id']; bookmarks: IUser['bookmarks'] }
@@ -24,4 +27,4 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useGetUsersQuery, useUpdateBookmarksMutation } = usersApi;
+export const { useGetUsersQuery, useGetUserQuery, useUpdateBookmarksMutation } = usersApi;
