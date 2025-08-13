@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 140 20">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;display=swap');
+            .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            fill: #4da6ff;
+            }
+        </style>
+    </defs>
+
+    <text x="0" y="18" class="logo-text">Bird Forum</text>
+</svg>

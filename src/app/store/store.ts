@@ -1,5 +1,6 @@
 import { commentsApi } from '@entities/comments/model/slice';
-import { postsApi } from '@entities/posts/model/slice';
+import { postsApi } from '@entities/posts/api/slice';
+import postFilterReducer from '@entities/posts/model/post-filters-slice';
 import { usersApi } from '@entities/users/model/slice';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -8,6 +9,7 @@ export const store = configureStore({
     [usersApi.reducerPath]: usersApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
+    postFilter: postFilterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

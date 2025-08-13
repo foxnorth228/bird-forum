@@ -1,5 +1,5 @@
 import { DB_ROUTE } from '@app/routes/db-route';
-import { IPost } from '@entities/posts/model/types';
+import { IPost, IPostUser } from '@entities/posts/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const postsApi = createApi({
@@ -9,7 +9,10 @@ export const postsApi = createApi({
     getPosts: builder.query<IPost[], void>({
       query: () => `posts`,
     }),
+    getPostsWithUsers: builder.query<IPostUser[], void>({
+      query: () => `/posts?_embed=user`,
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postsApi;
+export const { useGetPostsQuery, useGetPostsWithUsersQuery } = postsApi;
