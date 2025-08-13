@@ -7,5 +7,5 @@ export interface IUser {
   email: string;
   address: string;
   password: string;
-  bookmarks: number[];
+  bookmarks: string[];
 }

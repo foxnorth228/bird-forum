@@ -1,3 +1,4 @@
+import { IComment } from '@entities/comments/model/types';
 import { IUser } from '@entities/users/model/types';
 
 export interface IPost {
@@ -12,4 +13,8 @@ export interface IPost {
 
 export interface IPostUser extends IPost {
   user: IUser;
+}
+
+export interface IPostUserComments extends IPostUser {
+  comments: IComment[];
 }

@@ -1,5 +1,5 @@
 import { DB_HOST } from '@app/routes/db-route';
-import { IPost, IPostUser } from '@entities/posts/model/types';
+import { IPost, IPostUser, IPostUserComments } from '@entities/posts/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const postsApi = createApi({
@@ -13,6 +13,10 @@ export const postsApi = createApi({
     }),
     getPostsWithUsers: builder.query<IPostUser[], void>({
       query: () => `/posts?_embed=user`,
+      providesTags: ['Posts'],
+    }),
+    getPostWithUserComments: builder.query<IPostUserComments, IPost['id']>({
+      query: (id) => `/posts/${id}?_embed=user&_embed=comments`,
       providesTags: ['Posts'],
     }),
     updatePostLikes: builder.mutation<void, { id: IPostUser['id']; likes: IPostUser['likes'] }>({
@@ -40,6 +44,7 @@ export const postsApi = createApi({
 export const {
   useGetPostsQuery,
   useGetPostsWithUsersQuery,
+  useGetPostWithUserCommentsQuery,
   useUpdatePostLikesMutation,
   useUpdatePostDislikesMutation,
 } = postsApi;

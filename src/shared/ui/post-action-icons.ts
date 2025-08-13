@@ -8,10 +8,11 @@ export const SContainer = styled.div`
   user-select: none;
 `;
 
-export const SIcon = (Icon: WebTarget) => styled(Icon)<{ $color?: string }>`
+export const SIcon = (Icon: WebTarget) => styled(Icon)<{ $color?: string; $fill?: string }>`
   width: ${(props) => props.theme.spacing(2.5)};
   height: ${(props) => props.theme.spacing(2.5)};
   color: ${(props) => props.$color ?? props.theme.colors.text};
+  ${(props) => props.$fill && `fill: ${props.$fill};`};
 `;
 
 export const SCount = styled.span<{ $color?: string }>`

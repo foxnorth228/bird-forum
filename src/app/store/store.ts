@@ -1,5 +1,5 @@
 import authSlice from '@entities/auth/model/auth-slice';
-import { commentsApi } from '@entities/comments/model/slice';
+import { commentsApi } from '@entities/comments/api/slice';
 import { postsApi } from '@entities/posts/api/slice';
 import postFilterReducer from '@entities/posts/model/post-filter-slice';
 import { usersApi } from '@entities/users/api/slice';

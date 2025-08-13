@@ -1,3 +1,4 @@
+import { usersApi } from '@entities/users/api/slice';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IUser } from '../../users/model/types';
@@ -23,6 +24,14 @@ const authSlice = createSlice({
       state.user = null;
       localStorage.removeItem('user');
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(usersApi.endpoints.updateBookmarks.matchFulfilled, (state, action) => {
+      if (state.user) {
+        state.user.bookmarks = action.payload.bookmarks;
+        localStorage.setItem('user', JSON.stringify(state.user));
+      }
+    });
   },
 });
 

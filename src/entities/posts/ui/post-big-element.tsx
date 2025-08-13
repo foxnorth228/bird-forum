@@ -1,5 +1,4 @@
 import { IPostUser } from '@entities/posts/model/types';
-import { AddToFavorites } from '@features/posts/ui/add-to-fav';
 import { Dislikes } from '@features/posts/ui/dislike';
 import { Likes } from '@features/posts/ui/like';
 import { Link } from 'react-router';
@@ -20,7 +19,6 @@ export const PostElement = ({ data }: IPostElement) => {
         <SContent>{data.text}</SContent>
       </Link>
       <SActions>
-        <AddToFavorites postId={data.id} />
         <Likes id={data.id} likes={data.likes} dislikes={data.dislikes} />
         <Dislikes id={data.id} likes={data.likes} dislikes={data.dislikes} />
       </SActions>
@@ -59,6 +57,6 @@ const SContent = styled.div`
 
 const SActions = styled.div`
   display: grid;
-  grid-template-columns: 1fr min-content min-content;
+  grid-template-columns: min-content min-content;
   grid-template-rows: 1fr min-content;
 `;
